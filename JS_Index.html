@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript</title>
+  <link rel="shortcut icon" href="images/jslogo.png" type="image/x-icon">
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+  <h1 style="text-align: center;">My Name is</h1>
+  <h2 id="myname" style="text-align: center;">Anant Dargude</h2>
+  <button style="display: block; width: 300px; margin: auto; padding: 20px;" onclick="document.getElementById('myname').innerHTML='Dargude Anant'"> 
+    Click to Change Name 
+  </button>
+
+  <div style="width:fit-content; margin:auto; margin-top: 30px;">
+    <button style="padding: 20px;" onclick="document.getElementById('onOff').src='/images/pic_bulbon.gif'">Turn ON Bulb</button>
+    <img id="onOff" src="/images/pic_bulboff.gif" alt="">
+    <button style="padding: 20px;" onclick="document.getElementById('onOff').src='/images/pic_bulboff.gif'">Turn OFF Bulb</button>
+  </div>
+
+  <h1 id="add" style="width:fit-content; margin:auto; margin-top: 30px;"></h1>
+  <button style="display:block; padding: 20px; width:fit-content; margin:auto; margin-top: 30px;" onclick="document.getElementById('add').innerHTML=myAdd()">Click me to Add</button>  
+  
+  
+  <button style="display:block; padding: 20px; width:fit-content; margin:auto; margin-top: 30px;" onclick="document.getElementById('flist').innerHTML= myFruitFunc() ">Click me to Show List</button>  
+  <h1 id="flist" style="width:fit-content; margin:auto; margin-top: 30px;"></h1>
+
+  <div style="width:fit-content; margin:auto; margin-top: 30px;">
+    <button style="padding: 20px;" onclick="compfun1()">Sort </button>
+    <button style="padding: 20px;" onclick="compfun2()">Sort Ascending</button>
+    <button style="padding: 20px;" onclick="compfun3()">Sort Descending</button>
+  </div>
+  <p id="compare" style="text-align: center; font-size: 30px;"></p><br>
+
+  <button style="display:block; padding: 20px; width:fit-content; margin:auto; margin-top: 30px;" onclick="compfun4()" >Min & Max</button>
+  <p id="minmax" style="text-align: center; font-size: 30px;"></p><br>
+
+  <h2 id="mydate" style="text-align: center" ></h2>
+  <h2 id="mydate1" style="text-align: center" ></h2>
+  <h2 id="mydate2" style="text-align: center" ></h2>
+  <h2 id="mydate3" style="text-align: center" ></h2>
+  <h2 id="mydate4" style="text-align: center" ></h2>
+  <h2 id="mydate5" style="text-align: center" ></h2>
+  <h2 id="mydate6" style="text-align: center" ></h2>
+  <h2 id="mydate7" style="text-align: center" ></h2>
+  <h2 id="mydate8" style="text-align: center" ></h2>
+  <h2 id="mydate9" style="text-align: center" ></h2>
+  <h2 id="mydate10" style="text-align: center" ></h2>
+  <h2 id="mydate11" style="text-align: center" ></h2>
+
+  <h1 style="clear: both; text-align: center; margin-top: 200px;">Current Date & Time</h1>
+  <div class="msd">
+    <p id="msdday"></p>
+    <p id="msddate"></p>
+    <p id="msdmonth"></p> 
+    <p id="msdyear"></p>
+    <p id="msdhours"></p>
+    <p id="msdminutes"></p>
+    <p id="msdseconds"></p>
+  </div>
+
+  <h1 style="clear: both; text-align: center; margin-top: 200px; margin-bottom: 50px;">Time remaining to Complete your Goal</h1>
+  <div class="msd" style="clear: both;">
+    <p id="msddayc" style="background-color: rgb(247, 33, 33);"></p>
+    <p style="background-color: white;">Days</p>
+    <p id="msdhoursc" style="background-color: rgb(247, 33, 33);"></p>
+    <p style="background-color: white;">Hrs</p>
+    <p id="msdminutesc" style="background-color: rgb(247, 33, 33);"></p>
+    <p style="background-color: white;">Mins</p>
+    <p id="msdsecondsc" style="background-color: rgb(247, 33, 33);"></p>
+    <p style="background-color: white;">Secs</p>
+
+  </div>
+
+  <p id="forin" style="margin-top: 250px; clear: both; text-align: center;"></p>
+  <p id="forof" style="clear: both; text-align: center;"></p>
+
+  <input type="text" placeholder="Enter no between 5-50" name="" id="ipi" style="display:block; width: 200px; height: 30px; margin: auto; padding: 10px;">
+  <p id="ipv" style="text-align: center;"></p>
+  <button id="ipb" onclick="ipfunc()" style="display:block; width: 80px; margin:15px auto; padding: 10px;">Click me</button>
+  
+  <p id="democlass" style="text-align: center;"></p>
+  <p id="async"></p>
+  <p id="callback" style="text-align: center;">Ok</p>
+  <p id="interval" style="font-weight: bolder; font-size: 30px;"></p>
+  <p id="asyncawait"></p>
+
+  <img id="dynamicImg" src="/images/img1.jpg" alt="Error Loading Image">
+  <button id="imgBtn" onclick="changeImg()">Change Above Image</button>
+
+  <h2 onclick="this.innerHTML='Ooops!'" style="text-align: center;">Click on this text!</h2>
+
+  <div class="myEvents" id="onMouse" onmouseover="mOver(this)" onmouseout="mOut(this)">
+    Hover Over Me
+  </div>
+
+  <div class="myEvents" id="onMouse2" onmousedown="mDown(this)" onmouseup="mUp(this)">
+    Click Me
+  </div>
+
+  <p id="eventListenerDisp"></p>
+  <button class="centerBtn" id="eventListenerBtn">Click me</button>
+
+  <p id="eventParamDisp"></p>
+  <button class="centerBtn"  id="eventParam">Click me to Add</button>
+
+
+
+  <script src="/first.js"></script>
+</body>
+</html>
