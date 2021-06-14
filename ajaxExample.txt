@@ -1,0 +1,3 @@
+<h1>Anant Dargude</h1>
+<p>This Content is loaded from server in Background Without Refresh.</p>
+<p>This is the Power of AJAX.</p>

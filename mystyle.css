@@ -62,3 +62,17 @@ p{
   margin: 20px auto 20px auto; 
   padding: 10px;
 }
+
+#tableXML{
+  border-collapse: collapse;
+  width: max-content;
+  margin: auto;
+}
+#tableXML tr,th,td{
+  border:1px solid black;
+  padding: 5px 10px;
+}
+#tableXML tr:nth-child(even){
+  color: aliceblue;
+  background-color: cadetblue;
+}

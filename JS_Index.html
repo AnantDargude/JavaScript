@@ -107,7 +107,26 @@
   <p id="eventParamDisp"></p>
   <button class="centerBtn"  id="eventParam">Click me to Add</button>
 
+  <p id="browserHeight"></p>
+  <p id="browserWidth"></p>
+  <p id="locationObj"></p>
 
+  <button class="centerBtn" onclick="alert('This is Alert Box')">Click to Alert</button>
+  <button class="centerBtn" onclick="myConfirm()">Click to Confirm</button>
+  <p id="confirmBoxDisp"></p>
+  <button class="centerBtn" onclick="myPrompt()">Click to Prompt</button>
+  <p id="promptDisp"></p>
+  <button class="centerBtn" onclick="alert('Hello\nHow are you?');">Click to Alert</button>
+  
+  <div id="ajaxDemo" class="myEvents" style="background-color: black; color: white; height: max-content;">
+    <h1>Ajax Demo</h1>
+    <button onclick="myAjaxFunc()">Click Me</button>
+  </div>
+
+  <!-- XML TABLE  -->
+  <h1 style="text-align: center;">AJAX XML Deno</h1>
+  <button class="centerBtn" onclick="loadDoc()">Click for XML data Table</button>
+  <table id="tableXML" style="text-align: center;" ></table>
 
   <script src="/first.js"></script>
 </body>

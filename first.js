@@ -333,3 +333,80 @@ function okDate(){ document.getElementById("eventListenerDisp").innerHTML = Date
 //Passing parameter to the EventListener using Anonymous Function
 document.getElementById("eventParam").addEventListener("click", function(){ myAddForEvent(15,25);});
 function myAddForEvent(a,b){document.getElementById("eventParamDisp").innerHTML=a*b;}
+
+document.getElementById("browserHeight").innerHTML= "Height of the Browser window is- "+ innerHeight; //can eliminat window.
+document.getElementById("browserWidth").innerHTML= "Width of the Browser window is- "+ window.innerWidth;
+
+document.getElementById("locationObj").innerHTML= "Port Number is- " + window.location.port + 
+"<br> URL is- "+ location.href + "<br> Host Name is- "+ window.location.host + "<br> Pathname Name is- "+location.pathname;
+
+
+
+function myConfirm(){
+  var txt;
+  if(window.confirm("I am Confirm Box")){
+    txt= "You pressed Ok, True";
+  }else{
+    txt= "You Pressed Cancel, False"
+  }
+  document.getElementById("confirmBoxDisp").innerHTML=txt;
+}
+
+
+function myPrompt(){
+  var x = prompt("I am Prompt Box", "Anant Dargude");
+  
+  if( x==null || x== ""){
+    txt="User Cancel the Prompt"; 
+  }else{
+    txt = "My Name is " + x;
+  }
+  document.getElementById("promptDisp").innerHTML=txt;
+}
+
+
+//Ajax Working
+function myAjaxFunc(){
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload= function(){
+    document.getElementById("ajaxDemo").innerHTML= this.responseText;
+  }
+  xhttp.open("GET", "ajaxExample.txt");
+  // xhttp.open("GET", "jsonExample.json");
+  xhttp.send();
+}
+
+// XML TABLE
+function loadDoc(){
+  const fetchxml= new XMLHttpRequest();
+  fetchxml.onload= function(){ myXMLcall(this) }
+  fetchxml.open("GET", "xmlExample.xml");
+  fetchxml.send();
+}
+function myXMLcall(xml){
+  const xmlDoc= xml.responseXML;
+  const x= xmlDoc.getElementsByTagName("CD");
+  table= "<tr> <th>Artist</th><th>Title</th><th>Company</th> </tr>";
+  for(let i=0; i< x.length; i++){
+    table += "<tr><td>" + x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "</td><td>" +
+    x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "</td><td>" +
+    x[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue + "</td></tr>";
+  }
+  document.getElementById("tableXML").innerHTML= table;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
