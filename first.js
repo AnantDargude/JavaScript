@@ -369,7 +369,7 @@ function myPrompt(){
 function myAjaxFunc(){
   const xhttp = new XMLHttpRequest();
   xhttp.onload= function(){
-    document.getElementById("ajaxDemo").innerHTML= this.responseText;
+    document.getElementById("ajaxDemo").innerHTML= xhttp.responseText;
   }
   xhttp.open("GET", "ajaxExample.txt");
   // xhttp.open("GET", "jsonExample.json");
@@ -379,31 +379,114 @@ function myAjaxFunc(){
 // XML TABLE
 function loadDoc(){
   const fetchxml= new XMLHttpRequest();
-  fetchxml.onload= function(){ myXMLcall(this) }
+  fetchxml.onload= function(){ 
+    // const xmlDoc= fetchxml.responseXML;   //or
+    const xmlDoc= this.responseXML;
+    const x= xmlDoc.getElementsByTagName("CD");
+    myXMLcall(x) 
+  }
   fetchxml.open("GET", "xmlExample.xml");
   fetchxml.send();
 }
-function myXMLcall(xml){
-  const xmlDoc= xml.responseXML;
-  const x= xmlDoc.getElementsByTagName("CD");
+function myXMLcall(x){
+  // const xmlDoc= xml.responseXML;
+  // const x= xmlDoc.getElementsByTagName("CD");
   table= "<tr> <th>Artist</th><th>Title</th><th>Company</th> </tr>";
   for(let i=0; i< x.length; i++){
-    table += "<tr><td>" + x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue + "</td><td>" +
+    table += "<tr><td>" + x[i].getElementsByTagName("ARTIST")[0].firstChild.nodeValue + "</td><td>" +
     x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue + "</td><td>" +
     x[i].getElementsByTagName("COMPANY")[0].childNodes[0].nodeValue + "</td></tr>";
   }
   document.getElementById("tableXML").innerHTML= table;
 }
 
+//Video Libraray
+{
+  let i=0;
+  let x;
+  let len;
+
+  const xhttp= new XMLHttpRequest();
+  xhttp.onload= function(){
+    let xmlDoc= xhttp.responseXML;
+    x= xmlDoc.getElementsByTagName("CD");
+    len= x.length;
+    myDisp(i);
+  }
+  xhttp.open("GET", "xmlExample.xml");
+  xhttp.send();
+
+  function myDisp(i) {
+    document.getElementById("cdDisp").innerHTML= "<br> Title- " + 
+    x[i].getElementsByTagName("TITLE")[0].firstChild.nodeValue + "<br>"+
+    "Artist- " +x[i].getElementsByTagName("ARTIST")[0].firstChild.nodeValue + "<br>" +
+    "Country- " +x[i].getElementsByTagName("COUNTRY")[0].firstChild.nodeValue + "<br>" +
+    "Company- " +x[i].getElementsByTagName("COMPANY")[0].firstChild.nodeValue + "<br>" +
+    "Price- " +x[i].getElementsByTagName("PRICE")[0].firstChild.nodeValue +"<br>" +  
+    "Year- " +x[i].getElementsByTagName("YEAR")[0].firstChild.nodeValue;
+  }
+
+  function next() {
+    if(i < len-1){ i++; myDisp(i) }
+    else if(i == len-1){ i=0; myDisp(i)}
+  }
+  function previous() {
+    if(i > 0){ i--; myDisp(i) }
+  }
+  
+}
 
 
+//JSON
+const txt = '{"name":"John", "age":30, "city":"New York", "msg":"I am JSON data"}'
+const obj = JSON.parse(txt);
+document.getElementById("jsondemo").innerHTML = obj.name + ", " + obj.age + ", "+ obj.msg;
+
+const text = '[ "Ford", "BMW", "Audi", "Fiat","- i am a JSON Array" ]'; //JSON Objecr/array string
+const myArr = JSON.parse(text);
+document.getElementById("jsondemo1").innerHTML = text;     //notice this
+document.getElementById("jsondemo11").innerHTML = myArr;     //and this too
 
 
+// Below is the JSON Object it does not need parse to be done only json string need it 
+// const text = [ "Ford", "BMW", "Audi", "Fiat","- i am a JSON Array" ]; //JSON Objecr/array
+// document.getElementById("jsondemo1").innerHTML = text;
+
+const text2 = '{"name":"John", "birth":"1986-12-14", "city":"New York"}';
+const obj2 = JSON.parse(text2);
+obj2.birth = new Date(obj2.birth);                                //converted string into date obj
+document.getElementById("jsondemo2").innerHTML = obj2.name + ", " + obj2.birth; 
 
 
+//STORE AND RETRIVE DATA ON LOCAL STORAGE
+// store 
+const mydata11={fname:"Anant", lname:"Dargude", age:26};
+const myjson= JSON.stringify(mydata11);
+localStorage.setItem("mylocalfile", myjson);
+// retrive 
+let mytxt7= localStorage.getItem("mylocalfile");
+let ob1= JSON.parse(mytxt7);
+document.getElementById("jsondemo3").innerHTML= ob1.lname;
 
 
+//Looping with for-in in JSON
+// const myJSON = '{"name":"John", "age":30, "car":null}';
+// const myObj = JSON.parse(myJSON);
+// let text = "";
+// for (let x in myObj) {
+//   text += x + ", ";               //will give key
+//   text += myObj[x] + ", ";        //will give value
+// }
 
+
+//AJAX and JSON together
+const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("jsonajax").innerHTML = myObj.msg;
+}
+xmlhttp.open("GET", "jsonExample.json");
+xmlhttp.send();
 
 
 

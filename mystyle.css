@@ -76,3 +76,39 @@ p{
   color: aliceblue;
   background-color: cadetblue;
 }
+
+.myCd{
+  width: 500px;
+  height:max-content;
+  margin: auto;
+  text-align: center;
+  line-height: 100px;
+  font-weight: bolder;
+  vertical-align: middle;
+  border: 2px solid black;
+  /* background-color: cadetblue; 
+  color: cornsilk; */
+  position: relative;
+}
+.myCd div{
+  /* position: absolute; */
+  width:max-content;
+  text-align: justify;
+  /* text-align: start; */
+  margin: auto;
+  height: max-content;
+  /* background-color: white; */
+}
+.myCd button{
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50%;
+  position: absolute;
+  font-weight: bolder;
+  background-color: grey; 
+  color: white;
+}
+.myCd button:hover{
+  background-color: rgba(128, 128, 128, 0.356); 
+}
